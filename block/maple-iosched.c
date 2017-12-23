@@ -86,10 +86,10 @@ maple_add_request(struct request_queue *q, struct request *rq)
 	 * Add request to the proper fifo list and set its
 	 * expire time.
 	 */
-	if (!state_suspended && mdata->fifo_expire[sync][dir]) {
+	if (!state_suspend && mdata->fifo_expire[sync][dir]) {
 		rq->fifo_time = jiffies + mdata->fifo_expire[sync][dir];
 		list_add_tail(&rq->queuelist, &mdata->fifo_list[sync][dir]);
-	} else if (state_suspended && fifo_expire_suspended) {
+	} else if (state_suspend && fifo_expire_suspended) {
 		rq->fifo_time = jiffies + fifo_expire_suspended;
 		list_add_tail(&rq->queuelist, &mdata->fifo_list[sync][dir]);
 	}
@@ -214,9 +214,9 @@ maple_dispatch_requests(struct request_queue *q, int force)
 	/* Retrieve request */
 	if (!rq) {
 		/* Treat writes fairly while suspended, otherwise allow them to be starved */
-		if (!state_suspended && mdata->starved >= mdata->writes_starved)
+		if (!state_suspend && mdata->starved >= mdata->writes_starved)
 			data_dir = WRITE;
-		else if (state_suspended && mdata->starved >= 1)
+		else if (state_suspend && mdata->starved >= 1)
 			data_dir = WRITE;
 
 		rq = maple_choose_request(mdata, data_dir);
