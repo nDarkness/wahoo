@@ -408,6 +408,10 @@ MODULE_DEVICE_TABLE(acpi, usb_xhci_acpi_match);
 static struct platform_driver usb_xhci_driver = {
 	.probe	= xhci_plat_probe,
 	.remove	= xhci_plat_remove,
+<<<<<<< HEAD
+=======
+	.shutdown	= usb_hcd_platform_shutdown,
+>>>>>>> nathanchance/oreo-mr1
 	.driver	= {
 		.name = "xhci-hcd",
 		.pm = DEV_PM_OPS,

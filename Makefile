@@ -1,6 +1,10 @@
 VERSION = 4
 PATCHLEVEL = 4
+<<<<<<< HEAD
 SUBLEVEL = 107
+=======
+SUBLEVEL = 108
+>>>>>>> nathanchance/oreo-mr1
 EXTRAVERSION =
 NAME = Blurry Fish Butt
 

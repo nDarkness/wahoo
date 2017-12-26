@@ -189,6 +189,10 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 			return -EBUSY;
 		}
 		target_state = &drv->states[index];
+<<<<<<< HEAD
+=======
+		broadcast = false;
+>>>>>>> nathanchance/oreo-mr1
 	}
 
 	/* Take note of the planned idle state. */

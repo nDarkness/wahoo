@@ -587,6 +587,7 @@ vma_address(struct page *page, struct vm_area_struct *vma)
 }
 
 #ifdef CONFIG_ARCH_WANT_BATCHED_UNMAP_TLB_FLUSH
+<<<<<<< HEAD
 static void percpu_flush_tlb_batch_pages(void *data)
 {
 	/*
@@ -600,6 +601,8 @@ static void percpu_flush_tlb_batch_pages(void *data)
 	flush_tlb_local();
 }
 
+=======
+>>>>>>> nathanchance/oreo-mr1
 /*
  * Flush TLB entries for recently unmapped pages from remote CPUs. It is
  * important if a PTE was dirty when it was unmapped that it's flushed
@@ -616,6 +619,7 @@ void try_to_unmap_flush(void)
 
 	cpu = get_cpu();
 
+<<<<<<< HEAD
 	trace_tlb_flush(TLB_REMOTE_SHOOTDOWN, -1UL);
 
 	if (cpumask_test_cpu(cpu, &tlb_ubc->cpumask))
@@ -625,6 +629,16 @@ void try_to_unmap_flush(void)
 		smp_call_function_many(&tlb_ubc->cpumask,
 			percpu_flush_tlb_batch_pages, (void *)tlb_ubc, true);
 	}
+=======
+	if (cpumask_test_cpu(cpu, &tlb_ubc->cpumask)) {
+		count_vm_tlb_event(NR_TLB_LOCAL_FLUSH_ALL);
+		local_flush_tlb();
+		trace_tlb_flush(TLB_LOCAL_SHOOTDOWN, TLB_FLUSH_ALL);
+	}
+
+	if (cpumask_any_but(&tlb_ubc->cpumask, cpu) < nr_cpu_ids)
+		flush_tlb_others(&tlb_ubc->cpumask, NULL, 0, TLB_FLUSH_ALL);
+>>>>>>> nathanchance/oreo-mr1
 	cpumask_clear(&tlb_ubc->cpumask);
 	tlb_ubc->flush_required = false;
 	tlb_ubc->writable = false;

@@ -2088,9 +2088,17 @@ static int azx_probe_continue(struct azx *chip)
 			 * for other chips, still continue probing as other
 			 * codecs can be on the same link.
 			 */
+<<<<<<< HEAD
 			if (CONTROLLER_IN_GPU(pci))
 				goto out_free;
 			else
+=======
+			if (CONTROLLER_IN_GPU(pci)) {
+				dev_err(chip->card->dev,
+					"HSW/BDW HD-audio HDMI/DP requires binding with gfx driver\n");
+				goto out_free;
+			} else
+>>>>>>> nathanchance/oreo-mr1
 				goto skip_i915;
 		}
 

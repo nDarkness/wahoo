@@ -418,8 +418,14 @@ static struct vlsi_ring *vlsi_alloc_ring(struct pci_dev *pdev, struct ring_descr
 		memset(rd, 0, sizeof(*rd));
 		rd->hw = hwmap + i;
 		rd->buf = kmalloc(len, GFP_KERNEL|GFP_DMA);
+<<<<<<< HEAD
 		if (rd->buf == NULL ||
 		    !(busaddr = pci_map_single(pdev, rd->buf, len, dir))) {
+=======
+		if (rd->buf)
+			busaddr = pci_map_single(pdev, rd->buf, len, dir);
+		if (rd->buf == NULL || pci_dma_mapping_error(pdev, busaddr)) {
+>>>>>>> nathanchance/oreo-mr1
 			if (rd->buf) {
 				net_err_ratelimited("%s: failed to create PCI-MAP for %p\n",
 						    __func__, rd->buf);
@@ -430,8 +436,12 @@ static struct vlsi_ring *vlsi_alloc_ring(struct pci_dev *pdev, struct ring_descr
 				rd = r->rd + j;
 				busaddr = rd_get_addr(rd);
 				rd_set_addr_status(rd, 0, 0);
+<<<<<<< HEAD
 				if (busaddr)
 					pci_unmap_single(pdev, busaddr, len, dir);
+=======
+				pci_unmap_single(pdev, busaddr, len, dir);
+>>>>>>> nathanchance/oreo-mr1
 				kfree(rd->buf);
 				rd->buf = NULL;
 			}

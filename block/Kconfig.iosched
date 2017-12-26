@@ -32,6 +32,13 @@ config IOSCHED_DEADLINE
 	  a new point in the service tree and doing a batch of IO from there
 	  in case of expiry.
 
+<<<<<<< HEAD
+=======
+config IOSCHED_MAPLE
+	tristate "Maple I/O scheduler"
+	default y
+
+>>>>>>> nathanchance/oreo-mr1
 config IOSCHED_CFQ
 	tristate "CFQ I/O scheduler"
 	default y
@@ -66,6 +73,12 @@ choice
 	config DEFAULT_NOOP
 		bool "No-op"
 
+<<<<<<< HEAD
+=======
+	config DEFAULT_MAPLE
+		bool "Maple" if IOSCHED_MAPLE=y
+
+>>>>>>> nathanchance/oreo-mr1
 endchoice
 
 config DEFAULT_IOSCHED
@@ -73,6 +86,10 @@ config DEFAULT_IOSCHED
 	default "deadline" if DEFAULT_DEADLINE
 	default "cfq" if DEFAULT_CFQ
 	default "noop" if DEFAULT_NOOP
+<<<<<<< HEAD
+=======
+	default "maple" if DEFAULT_MAPLE
+>>>>>>> nathanchance/oreo-mr1
 
 endmenu
 

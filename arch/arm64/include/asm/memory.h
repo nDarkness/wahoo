@@ -150,6 +150,14 @@ extern u64			kimage_vaddr;
 /* the offset between the kernel virtual and physical mappings */
 extern u64			kimage_voffset;
 
+<<<<<<< HEAD
+=======
+static inline unsigned long kaslr_offset(void)
+{
+	return kimage_vaddr - KIMAGE_VADDR;
+}
+
+>>>>>>> nathanchance/oreo-mr1
 /*
  * Allow all memory at the discovery stage. We will clip it later.
  */

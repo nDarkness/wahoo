@@ -429,11 +429,19 @@ void arch_setup_pdev_archdata(struct platform_device *pdev)
 static int dump_kernel_offset(struct notifier_block *self, unsigned long v,
 			      void *p)
 {
+<<<<<<< HEAD
 	u64 const kaslr_offset = kimage_vaddr - KIMAGE_VADDR;
 
 	if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && kaslr_offset > 0) {
 		pr_emerg("Kernel Offset: 0x%llx from 0x%lx\n",
 			 kaslr_offset, KIMAGE_VADDR);
+=======
+	const unsigned long offset = kaslr_offset();
+
+	if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && offset > 0) {
+		pr_emerg("Kernel Offset: 0x%lx from 0x%lx\n",
+			 offset, KIMAGE_VADDR);
+>>>>>>> nathanchance/oreo-mr1
 	} else {
 		pr_emerg("Kernel Offset: disabled\n");
 	}

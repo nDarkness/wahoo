@@ -450,6 +450,10 @@ struct iser_fr_desc {
 	struct list_head		  list;
 	struct iser_reg_resources	  rsc;
 	struct iser_pi_context		 *pi_ctx;
+<<<<<<< HEAD
+=======
+	struct list_head                  all_list;
+>>>>>>> nathanchance/oreo-mr1
 };
 
 /**
@@ -463,6 +467,10 @@ struct iser_fr_pool {
 	struct list_head        list;
 	spinlock_t              lock;
 	int                     size;
+<<<<<<< HEAD
+=======
+	struct list_head        all_list;
+>>>>>>> nathanchance/oreo-mr1
 };
 
 /**

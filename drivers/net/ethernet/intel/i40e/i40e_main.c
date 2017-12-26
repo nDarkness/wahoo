@@ -4201,8 +4201,17 @@ static void i40e_napi_enable_all(struct i40e_vsi *vsi)
 	if (!vsi->netdev)
 		return;
 
+<<<<<<< HEAD
 	for (q_idx = 0; q_idx < vsi->num_q_vectors; q_idx++)
 		napi_enable(&vsi->q_vectors[q_idx]->napi);
+=======
+	for (q_idx = 0; q_idx < vsi->num_q_vectors; q_idx++) {
+		struct i40e_q_vector *q_vector = vsi->q_vectors[q_idx];
+
+		if (q_vector->rx.ring || q_vector->tx.ring)
+			napi_enable(&q_vector->napi);
+	}
+>>>>>>> nathanchance/oreo-mr1
 }
 
 /**
@@ -4216,8 +4225,17 @@ static void i40e_napi_disable_all(struct i40e_vsi *vsi)
 	if (!vsi->netdev)
 		return;
 
+<<<<<<< HEAD
 	for (q_idx = 0; q_idx < vsi->num_q_vectors; q_idx++)
 		napi_disable(&vsi->q_vectors[q_idx]->napi);
+=======
+	for (q_idx = 0; q_idx < vsi->num_q_vectors; q_idx++) {
+		struct i40e_q_vector *q_vector = vsi->q_vectors[q_idx];
+
+		if (q_vector->rx.ring || q_vector->tx.ring)
+			napi_disable(&q_vector->napi);
+	}
+>>>>>>> nathanchance/oreo-mr1
 }
 
 /**

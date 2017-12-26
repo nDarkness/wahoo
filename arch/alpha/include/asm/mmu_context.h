@@ -7,6 +7,10 @@
  * Copyright (C) 1996, Linus Torvalds
  */
 
+<<<<<<< HEAD
+=======
+#include <linux/sched.h>
+>>>>>>> nathanchance/oreo-mr1
 #include <asm/machvec.h>
 #include <asm/compiler.h>
 #include <asm-generic/mm_hooks.h>

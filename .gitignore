@@ -55,7 +55,10 @@ Module.symvers
 # Debian directory (make deb-pkg)
 #
 /debian/
+<<<<<<< HEAD
 /out/
+=======
+>>>>>>> nathanchance/oreo-mr1
 
 #
 # tar directory (make tar*-pkg)

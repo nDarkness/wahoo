@@ -883,4 +883,10 @@ config QCOM_CX_IPEAK
 	  clients are going to cross their thresholds then Cx ipeak hw module will raise
 	  an interrupt to cDSP block to throttle cDSP fmax.
 
+<<<<<<< HEAD
+=======
+config STATE_NOTIFIER
+        bool "State Notifier"
+
+>>>>>>> nathanchance/oreo-mr1
 source "drivers/soc/qcom/memshare/Kconfig"

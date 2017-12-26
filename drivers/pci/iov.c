@@ -161,7 +161,10 @@ static int virtfn_add(struct pci_dev *dev, int id, int reset)
 	pci_device_add(virtfn, virtfn->bus);
 	mutex_unlock(&iov->dev->sriov->lock);
 
+<<<<<<< HEAD
 	pci_bus_add_device(virtfn);
+=======
+>>>>>>> nathanchance/oreo-mr1
 	sprintf(buf, "virtfn%u", id);
 	rc = sysfs_create_link(&dev->dev.kobj, &virtfn->dev.kobj, buf);
 	if (rc)
@@ -172,6 +175,11 @@ static int virtfn_add(struct pci_dev *dev, int id, int reset)
 
 	kobject_uevent(&virtfn->dev.kobj, KOBJ_CHANGE);
 
+<<<<<<< HEAD
+=======
+	pci_bus_add_device(virtfn);
+
+>>>>>>> nathanchance/oreo-mr1
 	return 0;
 
 failed2:

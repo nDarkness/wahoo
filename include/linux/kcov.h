@@ -7,19 +7,38 @@ struct task_struct;
 
 #ifdef CONFIG_KCOV
 
+<<<<<<< HEAD
 void kcov_task_init(struct task_struct *t);
 void kcov_task_exit(struct task_struct *t);
 
 enum kcov_mode {
 	/* Coverage collection is not enabled yet. */
 	KCOV_MODE_DISABLED = 0,
+=======
+enum kcov_mode {
+	/* Coverage collection is not enabled yet. */
+	KCOV_MODE_DISABLED = 0,
+	/* KCOV was initialized, but tracing mode hasn't been chosen yet. */
+	KCOV_MODE_INIT = 1,
+>>>>>>> nathanchance/oreo-mr1
 	/*
 	 * Tracing coverage collection mode.
 	 * Covered PCs are collected in a per-task buffer.
 	 */
+<<<<<<< HEAD
 	KCOV_MODE_TRACE = 1,
 };
 
+=======
+	KCOV_MODE_TRACE_PC = 2,
+	/* Collecting comparison operands mode. */
+	KCOV_MODE_TRACE_CMP = 3,
+};
+
+void kcov_task_init(struct task_struct *t);
+void kcov_task_exit(struct task_struct *t);
+
+>>>>>>> nathanchance/oreo-mr1
 #else
 
 static inline void kcov_task_init(struct task_struct *t) {}

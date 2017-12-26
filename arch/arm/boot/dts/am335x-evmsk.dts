@@ -668,6 +668,10 @@
 	ti,non-removable;
 	bus-width = <4>;
 	cap-power-off-card;
+<<<<<<< HEAD
+=======
+	keep-power-in-suspend;
+>>>>>>> nathanchance/oreo-mr1
 	pinctrl-names = "default";
 	pinctrl-0 = <&mmc2_pins>;
 

@@ -240,7 +240,12 @@ out_master_del:
 out_err:
 	kfree(acomp);
 	bus->audio_component = NULL;
+<<<<<<< HEAD
 	dev_err(dev, "failed to add i915 component master (%d)\n", ret);
+=======
+	hdac_acomp = NULL;
+	dev_info(dev, "failed to add i915 component master (%d)\n", ret);
+>>>>>>> nathanchance/oreo-mr1
 
 	return ret;
 }
@@ -273,6 +278,10 @@ int snd_hdac_i915_exit(struct hdac_bus *bus)
 
 	kfree(acomp);
 	bus->audio_component = NULL;
+<<<<<<< HEAD
+=======
+	hdac_acomp = NULL;
+>>>>>>> nathanchance/oreo-mr1
 
 	return 0;
 }

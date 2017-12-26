@@ -405,6 +405,10 @@ int iser_alloc_fastreg_pool(struct ib_conn *ib_conn,
 	int i, ret;
 
 	INIT_LIST_HEAD(&fr_pool->list);
+<<<<<<< HEAD
+=======
+	INIT_LIST_HEAD(&fr_pool->all_list);
+>>>>>>> nathanchance/oreo-mr1
 	spin_lock_init(&fr_pool->lock);
 	fr_pool->size = 0;
 	for (i = 0; i < cmds_max; i++) {
@@ -416,6 +420,10 @@ int iser_alloc_fastreg_pool(struct ib_conn *ib_conn,
 		}
 
 		list_add_tail(&desc->list, &fr_pool->list);
+<<<<<<< HEAD
+=======
+		list_add_tail(&desc->all_list, &fr_pool->all_list);
+>>>>>>> nathanchance/oreo-mr1
 		fr_pool->size++;
 	}
 
@@ -435,13 +443,22 @@ void iser_free_fastreg_pool(struct ib_conn *ib_conn)
 	struct iser_fr_desc *desc, *tmp;
 	int i = 0;
 
+<<<<<<< HEAD
 	if (list_empty(&fr_pool->list))
+=======
+	if (list_empty(&fr_pool->all_list))
+>>>>>>> nathanchance/oreo-mr1
 		return;
 
 	iser_info("freeing conn %p fr pool\n", ib_conn);
 
+<<<<<<< HEAD
 	list_for_each_entry_safe(desc, tmp, &fr_pool->list, list) {
 		list_del(&desc->list);
+=======
+	list_for_each_entry_safe(desc, tmp, &fr_pool->all_list, all_list) {
+		list_del(&desc->all_list);
+>>>>>>> nathanchance/oreo-mr1
 		iser_free_reg_res(&desc->rsc);
 		if (desc->pi_ctx)
 			iser_free_pi_ctx(desc->pi_ctx);
